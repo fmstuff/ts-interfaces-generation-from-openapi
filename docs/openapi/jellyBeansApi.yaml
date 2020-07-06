@@ -1,0 +1,76 @@
+openapi: 3.0.2
+info:
+  title: Jelly Beans API
+  version: '1.0'
+  description: |
+    The Jelly Beans API serves you... Jelly Beans!
+  contact:
+    name: Jelly Support
+    url: 'https://jelly.beans'
+    email: dev-support@jelly.beans
+  termsOfService: 'https://api.jelly.beans/terms'
+servers:
+  - url: 'https://api.jelly.beans'
+    description: The Jelly Beans API server.
+components:
+  securitySchemes:
+    bearerToken:
+      type: apiKey
+      name: Authorization
+      in: header
+paths:
+  /jellybeans:
+    get:
+      operationId: getJellyBeansList
+      summary: Get a list delicious Jelly Beans.
+      description: |
+        Get all the Jelly Beans out there. Yummy! :)
+      tags:
+        - JellyBeans
+      security:
+        - bearerToken: []
+      parameters:
+        - in: query
+          name: color
+          schema:
+            type: string
+            description: The available Jelly Bean colors.
+            example: yellow
+            enum:
+              - red
+              - green
+              - blue
+              - yellow
+              - orange
+              - purple
+              - rainbow
+          required: false
+          description: |
+            Filter the Jellies for your favorite color! Magic!
+      responses:
+        '200':
+          description: >
+            Alright - here you go: your list of Jelly Beans according to your
+            query and filters.
+          content:
+            application/json:
+              schema:
+                description: JSON representation of a list of Jelly Beans.
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The unique ID (UUID) of this Jelly Bean.
+                    example: cf988dc2-831c-471a-bc98-33cc6711724d
+                  color:
+                    type: string
+                    description: The available Jelly Bean colors.
+                    example: yellow
+                    enum:
+                      - red
+                      - green
+                      - blue
+                      - yellow
+                      - orange
+                      - purple
+                      - rainbow

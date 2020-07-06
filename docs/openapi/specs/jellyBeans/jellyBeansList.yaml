@@ -1,0 +1,56 @@
+openapi: 3.0.2
+info:
+  version: 1.0
+
+paths:
+  /:
+    get:
+      operationId: getJellyBeansList
+      summary: Get a list delicious Jelly Beans.
+      description: |
+        Get all the Jelly Beans out there. Yummy! :)
+      tags:
+        - JellyBeans
+      security:
+        - bearerToken: []
+      parameters:
+        - in: query
+          name: color
+          schema:
+            $ref: '#/components/schemas/JellyColor'
+          required: false
+          description: >
+            Filter the Jellies for your favorite color! Magic!
+      responses:
+        200:
+          description: |
+            Alright - here you go: your list of Jelly Beans according to your query and filters.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JellyBeansListResponseBody"
+
+components:
+  schemas:
+    JellyColor:
+      type: string
+      description: The available Jelly Bean colors.
+      example: yellow
+      enum:
+        - red
+        - green
+        - blue
+        - yellow
+        - orange
+        - purple
+        - rainbow
+    JellyBeansListResponseBody:
+      description: JSON representation of a list of Jelly Beans.
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique ID (UUID) of this Jelly Bean.
+          example: cf988dc2-831c-471a-bc98-33cc6711724d
+        color:
+          $ref: '#/components/schemas/JellyColor'

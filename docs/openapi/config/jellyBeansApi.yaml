@@ -1,0 +1,27 @@
+openapi: 3.0.2
+info:
+  title: Jelly Beans API
+  version: '1.0'
+  description: |
+    The Jelly Beans API serves you... Jelly Beans!
+  contact:
+    name: Jelly Support
+    url: https://jelly.beans
+    email: dev-support@jelly.beans
+  termsOfService: https://api.jelly.beans/terms
+
+servers:
+  - url: https://api.jelly.beans
+    description: The Jelly Beans API server.
+
+components:
+  securitySchemes:
+    bearerToken:
+      type: apiKey
+      name: Authorization
+      in: header
+
+paths:
+  # JELLY BEANS
+  /jellybeans:
+    $ref: '../specs/jellyBeans/jellyBeansList.yaml#/paths/~1'
