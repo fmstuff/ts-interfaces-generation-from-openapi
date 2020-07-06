@@ -6,7 +6,7 @@ paths:
   /:
     get:
       operationId: getJellyBeansList
-      summary: Get a list delicious Jelly Beans.
+      summary: Get a list of delicious Jelly Beans.
       description: |
         Get all the Jelly Beans out there. Yummy! :)
       tags:
@@ -48,9 +48,23 @@ components:
       description: JSON representation of a list of Jelly Beans.
       type: object
       properties:
+        jelly_beans:
+          type: array
+          items:
+            $ref: '#/components/schemas/JellyBean'
+      required:
+        - jelly_beans
+
+    JellyBean:
+      description: JSON representation of a Jelly Bean.
+      type: object
+      properties:
         id:
           type: string
           description: The unique ID (UUID) of this Jelly Bean.
           example: cf988dc2-831c-471a-bc98-33cc6711724d
         color:
           $ref: '#/components/schemas/JellyColor'
+      required:
+        - id
+        - color

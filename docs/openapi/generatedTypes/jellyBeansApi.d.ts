@@ -16,18 +16,20 @@
              * JSON representation of a list of Jelly Beans.
              */
             export interface I200 {
-                /**
-                 * The unique ID (UUID) of this Jelly Bean.
-                 * example:
-                 * cf988dc2-831c-471a-bc98-33cc6711724d
-                 */
-                id?: string;
-                /**
-                 * The available Jelly Bean colors.
-                 * example:
-                 * yellow
-                 */
-                color?: "red" | "green" | "blue" | "yellow" | "orange" | "purple" | "rainbow";
+                jelly_beans: {
+                    /**
+                     * The unique ID (UUID) of this Jelly Bean.
+                     * example:
+                     * cf988dc2-831c-471a-bc98-33cc6711724d
+                     */
+                    id: string;
+                    /**
+                     * The available Jelly Bean colors.
+                     * example:
+                     * yellow
+                     */
+                    color: "red" | "green" | "blue" | "yellow" | "orange" | "purple" | "rainbow";
+                }[];
             }
         }
     }
